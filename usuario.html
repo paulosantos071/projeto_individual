@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./CSS/usuario.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="telatotal">
+        <!-- DIV DO LADO ESQUERDO -->
+
+        <div id="div_left">
+
+            <div id="div_button_perfil">
+
+                <img src="./imagens/usu_perfil.png" alt="" onclick="aparecer_perfil()">
+
+            </div>
+
+            <div id="div_button_inicial">
+
+                <img src="./imagens/feed.png" alt="" onclick="aparecer_feed()">
+
+            </div>
+
+        </div>
+
+        <!-- DIV DO LADO DIREITO -->
+
+        <div id="div_right">
+
+            <!-- PARTE SUPERIOR -->
+
+            <div id="div_right_sup">
+                <div id="div_loggout">
+                    <img src="./imagens/logoutt.png" alt="">
+                </div>
+
+            </div>
+
+            <!-- CONTEUDO DA TELA DO USUARIO -->
+
+            <div id="iconteudo_usuario" style="display: block;">
+
+                <div id="div_conteudo_usuario">
+
+                    <div id="parte01">
+
+                        <div id="imagem_usuario">
+                            <img src="./imagens/imagem_usuario_ilustrativa.png" alt="">
+                        </div>
+
+                    </div>
+
+                    <div id="div_divisoria"></div>
+
+                    <div id="parte02">
+                        <h2>DADOS DO USUARIO</h2>
+
+                        <div id="nome_usuario">
+                            <h4>MARIA DAS DORES CARDOSO</h4>
+                        </div>
+
+                        <div id="div_usuario_flex">
+
+                            <div id="dataNasc_usuario">
+                                <h4>24 / 12 / 1989</h4>
+                            </div>
+
+                            <div id="cpf_usuario">
+                                <h4>229.765.227-12</h4>
+                            </div>
+
+                        </div>
+
+                        <div id="email_usuario">
+                            <h4>MARIA.CARDODO@GMAIL.COM</h4>
+                        </div>
+
+                        <div id="div_linha_endereco"></div>
+
+                        <div id="endereco_caixa1">
+                            <div id="CEP_usuario">
+                                <h4>05790-260</h4>
+                            </div>
+
+                            <div id="endreco_usuario">
+                                <h4>R> LOREM IPSU</h4>
+                            </div>
+
+                            <div id="numero_usuario">
+                                <h4>472</h4>
+                            </div>
+                            <div id="bairro_usuario">
+                                <h4>BELA VISTA</h4>
+                            </div>
+                        </div>
+
+
+                        <div id="endereco_caixa2">
+                            <div id="estado_usuario">
+                                <h4>SÃO PAULO</h4>
+                            </div>
+
+                            <div id="cidade_usuario">
+                                <h4>SÃO PAULO</h4>
+                            </div>
+                        </div>
+
+                        <button onclick="alterar()">ALTERAR DADOS</button>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- CONTEUDO DO FEED DE RECITAS -->
+
+
+            <div id="conteudo_receitas" style="display: none;">
+
+                <form action="" "></form>
+
+                <div id="div_tituloreceita">
+                    <img src="./imagens/img_comida.png" alt="">
+                    <h3>ESCREVA A SUA RECEITA ABAIXO</h3>
+                </div>
+
+                <div id="informartitulo">
+                    <h5>INFORME O TITULO</h5>
+
+                    <input type="text" placeholder="TITULO">
+                </div>
+
+                <div id="informarreceita">
+                    <h5>INFORME A RECEITA</h5>
+
+                    <textarea rows="10" cols="40" maxlength="1500"></textarea>
+                </div>
+
+                <button>ENVIAR A RECEITA</button>
+
+                </form>
+
+            </div>
+
+
+
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    function aparecer_feed() {
+        iconteudo_usuario.style.display = 'none'
+        conteudo_receitas.style.display = 'block'
+
+
+    }
+
+    function aparecer_perfil() {
+        iconteudo_usuario.style.display = 'block'
+        conteudo_receitas.style.display = 'none'
+    }
+</script>

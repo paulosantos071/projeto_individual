@@ -1,0 +1,474 @@
+body{
+    margin: 0%;
+    background-color: #d5dbdb;;
+}
+
+#telatotal {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+/* ESTILIZAÇÃO DA TELA DE DADOS DO PERFIL */
+
+/* PARTE ESQUERDA */
+
+#iconteudo_usuario {
+    /* background-color: rgba(82, 80, 80, 0.794); */
+    margin-left: 150px;
+    width: 85%;
+ 
+}
+
+#div_left{
+    background-color: #742011;
+    width: 7%;
+    height: 625px;
+    border-radius: 0px 35px 00px 0px;
+    box-shadow: 0px 0px 2px 6px #1e1f1f55;
+    position: fixed;
+
+}
+
+#div_button_perfil{
+    margin-top: 110px;
+    /* margin-left: 30px; */
+    /* background-color: white; */
+}
+
+#div_button_perfil img{
+    width: 40px;
+    cursor: pointer;
+    margin-left: 30px;
+}
+
+#div_button_perfil:hover{
+    background-color: #181717c4;
+ 
+ 
+}
+
+#div_button_inicial{
+    margin-top: 40px;
+    /* margin-left: 30px; */
+
+}
+
+#div_button_inicial img{
+    /* background-color: white; */
+    width: 40px;
+    cursor: pointer;
+    margin-left: 30px;
+}
+
+#div_button_inicial:hover{
+    background-color: #181717c4;
+
+ 
+}
+
+
+/* PARTE DIREITA */
+
+#div_right{
+    background-color: #d5dbdb;;
+    width: 93%;
+    height: 625px;
+    /* background-image: url(../imagens/imagemprincipal.png); */
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#div_right_sup{
+    margin-left: 1070px;
+    margin-top: 20px;
+    /* background-color: rgb(58, 55, 55); */
+    width: 10%;
+    height: 40px;
+}
+
+#div_loggout img{
+    width: 40px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+#div_conteudo_usuario{
+    /* background-color: yellow; */
+    margin-top: 50px;
+    margin-left: 110px;
+    width: 80%;
+    height: 450px;
+    display: flex;
+}
+
+#imagem_usuario{
+    /* background-color: white; */
+    border-width: 2px;
+    border-style: groove;
+    border-color: black;
+    border-radius: 40px;
+    margin-top: 50px;
+    margin-left: 25px;
+    width: 350px;
+}
+
+#imagem_usuario img{
+    width: 350px;
+}
+
+#div_divisoria{
+    margin-left: 20px;
+    background-color: rgb(0, 0, 0);
+    height: 100%;
+    width: 4px;
+}
+
+#parte01{
+    /* background-color: black; */
+    margin-left: -100px;
+    height: 100%;
+    width: 400px;
+}
+
+#parte02{
+    /* background-color: white; */
+    margin-left: 100px;
+    width: 594px;
+}
+
+
+#parte02 h2{
+    margin-block-start: 9px;
+    margin-block-end: 0;
+    margin-left: 140px;
+    margin-top: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 28px;
+}
+
+#nome_usuario{
+    margin-top: 40px;
+    margin-left: 150px;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    height: 35px;
+    width: 300px;
+    border-width: 2px;
+    border-style: groove;
+    border-color: black;
+}
+
+#nome_usuario h4{
+    margin-block-start: 7px;
+    margin-block-end: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#div_usuario_flex{
+    margin-left: 40px;
+    display: flex;
+    /* background-color: blue; */
+    width: 500px;
+    height: 66px;
+}
+
+#dataNasc_usuario{
+    background-color: rgb(255, 255, 255);
+    margin-top: 13px;
+    height: 35px;
+    width: 150px;
+    border-width: 2px;
+    border-style: groove;
+    border-color: black;
+    margin-left: 50px;
+}
+
+#dataNasc_usuario h4{
+    margin-block-start: 9px;
+    margin-block-end: 0;
+    margin-left: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px;
+}
+
+#cpf_usuario{
+    background-color: rgb(255, 255, 255);
+    height: 36px;
+    width: 180px;
+    border-width: 2px;
+    border-style: groove;
+    border-color: black;
+    margin-top: 13px;
+    margin-left: 60px;
+}
+
+#cpf_usuario h4{
+    margin-block-start: 9px;
+    margin-block-end: 0;
+    margin-left: 30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px;
+}
+
+#email_usuario{
+    margin-top: 0px;
+    margin-left: 150px;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    height: 35px;
+    width: 300px;
+    border-width: 2px;
+    border-style: groove;
+    border-color: black;
+}
+
+#email_usuario h4{
+    margin-block-start: 9px;
+    margin-block-end: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px;
+}
+
+#div_linha_endereco{
+    margin-top: 30px;
+    margin-left: 86px;
+    background-color: black;
+    width: 70%;
+    height: 2px;
+}
+
+#endereco_caixa1{
+    display: flex;
+    margin-top: 20px;
+}
+
+#CEP_usuario{
+    background-color: rgb(255, 255, 255);
+    width: 100px;
+    height: 35px;
+    margin-left: 20px;
+    border-width: 2px;
+    border-style: groove;
+    border-color: black;
+}
+
+#CEP_usuario h4{
+    margin-block-start: 0;
+    margin-block-end: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px;
+    margin-left: 8px;
+    margin-top: 10px;
+}
+
+#endreco_usuario{
+    background-color: rgb(255, 255, 255);
+    width: 250px;
+    height: 35px;
+    margin-left: 10px;
+    border-width: 2px;
+    border-style: groove;
+    border-color: black;
+}
+
+#endreco_usuario h4{
+    margin-block-start: 0;
+    margin-block-end: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+#numero_usuario{
+    background-color: rgb(255, 255, 255);
+    width: 50px;
+    height: 35px;
+    margin-left: 10px;
+    border-width: 2px;
+    border-style: groove;
+    border-color: black;
+}
+
+#numero_usuario h4{
+    margin-block-start: 0;
+    margin-block-end: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px;
+    margin-left: 8px;
+    margin-top: 10px;
+}
+
+#bairro_usuario{
+    background-color: rgb(255, 255, 255);
+    width: 100px;
+    height: 35px;
+    margin-left: 10px;
+    border-width: 2px;
+    border-style: groove;
+    border-color: black;
+}
+
+#bairro_usuario h4{
+    margin-block-start: 0;
+    margin-block-end: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px;
+    margin-left: 8px;
+    margin-top: 10px;
+}
+
+#endereco_caixa2{
+    display: flex;
+    margin-top: 20px;
+}
+
+#estado_usuario{
+    background-color: rgb(255, 255, 255);
+    width: 150px;
+    height: 35px;
+    margin-left: 130px;
+    border-width: 2px;
+    border-style: groove;
+    border-color: black;
+}
+
+#estado_usuario h4{
+    margin-block-start: 0;
+    margin-block-end: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px;
+    margin-left: 30px;
+    margin-top: 10px;
+}
+
+#cidade_usuario{
+    background-color: rgb(255, 255, 255);
+    width: 150px;
+    height: 35px;
+    margin-left: 10px;
+    border-width: 2px;
+    border-style: groove;
+    border-color: black;
+
+}
+
+#cidade_usuario h4{
+    margin-block-start: 0;
+    margin-block-end: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px;
+    margin-left: 30px;
+    margin-top: 10px;
+}
+
+#parte02 button{
+    background-color: rgb(133, 127, 127);
+    margin-top: 20px;
+    margin-left: 210px;
+    width: 180px;
+    height: 30px;
+    border-width: 2px;
+    border-style: groove;
+    border-color: black;
+    border-radius: 14px;
+    cursor: pointer;
+}
+
+
+/* ESTILIZAÇÃO DA TELA DO FEED DE RECITAS */
+
+
+
+#conteudo_receitas {
+    /* background-color: rgb(255, 255, 255); */
+    border-radius: 10px;
+    width: 80%;
+    height: 99%;
+    margin-top: 20px;
+    margin-left: 180px;
+    margin-right: 80px;
+
+}
+
+#div_tituloreceita {
+    /* background-color: red; */
+    display: flex;
+    width: 530px;
+
+    margin-left: 220px;
+    
+}
+
+#div_tituloreceita img{
+    width: 70px;
+    height: 70px;
+}
+
+#div_tituloreceita h3{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 24px;
+    /* margin-left: 20px; */
+    margin-top: 35px;
+    color: black;
+    text-shadow: rgb(128, 123, 123) 0.1em 0.1em 0.2em;
+}
+
+#informartitulo {
+    /* background-color: red; */
+    margin-left: 200px;
+}
+
+#informartitulo h5{
+    font-size: 18px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-bottom: 10px;
+}
+
+#informartitulo input{
+    width: 550px;
+    height: 30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-width: 2px;
+    border-style: groove;
+    border-color: black;
+    padding-left: 15px;
+    font-weight: bolder;
+    font-size: 15px;
+
+}
+
+
+#informarreceita {
+    /* background-color: red; */
+    margin-left: 200px;
+}
+
+#informarreceita h5{
+    font-size: 18px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-bottom: 10px;
+}
+
+#informarreceita textarea{
+    width: 550px;
+    height: 250px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-width: 1px;
+    border-style: groove;
+    border-color: black;
+    padding-top: 10px;
+    padding-left: 15px;
+    font-size: 15px;
+    padding-top: -400px;
+    line-height: 1.3;
+}
+
+#conteudo_receitas button {
+    width: 200px;
+    height: 40px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
+    margin-top: 10px;
+    margin-left: 360px;
+}
