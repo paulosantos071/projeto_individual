@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var sequelize = require('../models').sequelize;
-var Publicacao = require('../models').Publicacao;
+var Publicacao = require('../models').usuario;
 
 /* ROTA QUE RECUPERA CRIA UMA PUBLICAÇÃO */
 router.post('/publicar/:idUsuario', function(req, res, next) {
@@ -11,6 +11,7 @@ router.post('/publicar/:idUsuario', function(req, res, next) {
 
     Publicacao.create({
         descricao: req.body.descricao,
+        receita: req.body.receita,
         fkUsuario: idUsuario
     }).then(resultado => {
         console.log("Post realizado com sucesso!!");
@@ -28,14 +29,14 @@ router.get('/', function(req, res, next) {
 	
     let instrucaoSql = `SELECT 
     usuario.nome,
-    descricao
-    FROM publicacao
+    titulo, receita
+    FROM receita
     INNER JOIN usuario
     ON Publicacao.fkUsuario = Usuario.id
     ORDER BY publicacao.id DESC`;
 
 	sequelize.query(instrucaoSql, {
-		model: Publicacao,
+		model: usuario,
 		mapToModel: true 
 	})
 	.then(resultado => {
@@ -56,7 +57,7 @@ router.get('/:idUsuario', function(req, res, next) {
 
     let instrucaoSql = `SELECT 
     usuario.nome,
-    descricao
+    titulo, receita
     FROM publicacao
     INNER JOIN usuario
     ON Publicacao.fkUsuario = Usuario.id

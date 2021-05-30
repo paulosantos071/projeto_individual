@@ -11,6 +11,8 @@
 
 <body>
 
+    <script type="text/javascript" src="funcoes.js"></script>
+
     <div id="telatotal">
         <!-- DIV DO LADO ESQUERDO -->
 
@@ -38,7 +40,9 @@
 
             <div id="div_right_sup">
                 <div id="div_loggout">
-                    <img src="./imagens/logoutt.png" alt="">
+                    <ul>
+                        <li><a href="#" class="highlight" onclick="logoff()">LOGOUT</a></li>
+                    </ul>
                 </div>
 
             </div>
@@ -62,53 +66,53 @@
                     <div id="parte02">
                         <h2>DADOS DO USUARIO</h2>
 
-                        <div id="nome_usuario">
-                            <h4>MARIA DAS DORES CARDOSO</h4>
+                        <div id="nome_usuario" class="usuario">
+                          <h4 id="b_usuario"> </h4> 
                         </div>
 
                         <div id="div_usuario_flex">
 
                             <div id="dataNasc_usuario">
-                                <h4>24 / 12 / 1989</h4>
+                                <h4></h4>
                             </div>
 
                             <div id="cpf_usuario">
-                                <h4>229.765.227-12</h4>
+                                <h4></h4>
                             </div>
 
                         </div>
 
                         <div id="email_usuario">
-                            <h4>MARIA.CARDODO@GMAIL.COM</h4>
+                            <h4 id="b_email"></h4>
                         </div>
 
                         <div id="div_linha_endereco"></div>
 
                         <div id="endereco_caixa1">
                             <div id="CEP_usuario">
-                                <h4>05790-260</h4>
+                                <h4></h4>
                             </div>
 
                             <div id="endreco_usuario">
-                                <h4>R> LOREM IPSU</h4>
+                                <h4></h4>
                             </div>
 
                             <div id="numero_usuario">
-                                <h4>472</h4>
+                                <h4></h4>
                             </div>
                             <div id="bairro_usuario">
-                                <h4>BELA VISTA</h4>
+                                <h4></h4>
                             </div>
                         </div>
 
 
                         <div id="endereco_caixa2">
                             <div id="estado_usuario">
-                                <h4>SÃO PAULO</h4>
+                                <h4></h4>
                             </div>
 
                             <div id="cidade_usuario">
-                                <h4>SÃO PAULO</h4>
+                                <h4></h4>
                             </div>
                         </div>
 
@@ -126,29 +130,31 @@
 
             <div id="conteudo_receitas" style="display: none;">
 
-                <form action="" "></form>
+                
 
                 <div id="div_tituloreceita">
                     <img src="./imagens/img_comida.png" alt="">
                     <h3>ESCREVA A SUA RECEITA ABAIXO</h3>
                 </div>
 
-                <div id="informartitulo">
-                    <h5>INFORME O TITULO</h5>
+                
+                <form id="form_publicar" method="post" onsubmit="return publicar()">
+                    <div id="informartitulo">
+                        <h5>INFORME O TITULO</h5>
 
-                    <input type="text" placeholder="TITULO">
-                </div>
+                        <input type="text" name="titulo" placeholder="TITULO">
+                    </div>
 
-                <div id="informarreceita">
-                    <h5>INFORME A RECEITA</h5>
+                    <div id="informarreceita">
+                        <h5>INFORME A RECEITA</h5>
 
-                    <textarea rows="10" cols="40" maxlength="1500"></textarea>
-                </div>
+                        <textarea rows="10" name="receita" cols="40"  maxlength="1500"></textarea>
+                    </div>
 
-                <button>ENVIAR A RECEITA</button>
+                    <button id="btn_publicar">ENVIAR A RECEITA</button>
 
                 </form>
-
+                <img src="aguarde-orange.gif" id="img_aguarde"> 
             </div>
 
 
@@ -172,4 +178,115 @@
         iconteudo_usuario.style.display = 'block'
         conteudo_receitas.style.display = 'none'
     }
+</script>
+
+
+<script>
+
+    function publicar() {
+        console.log("entrei!")
+        aguardar();
+        var formulario = new URLSearchParams(new FormData(form_publicar));
+        var idUsuario = sessionStorage.id_usuario_meuapp;
+        fetch(`/publicacoes/publicar/${idUsuario}`, {
+            method: "POST",
+            body: formulario
+        }).then(resposta => {
+
+            if (resposta.ok) {
+                obterPublicacoes();
+
+                finalizarAguardar();
+            } else {
+                console.log('Erro ao publicar!');
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+        });
+
+        return false;
+    }
+
+    function atualizarFeed(publicacoes) {
+        var feed = document.getElementById("feed_container");
+        feed.innerHTML = "";
+        for (let i = 0; i < publicacoes.length; i++) {
+            var publicacao = publicacoes[i];
+
+            var divPublicacao = document.createElement("div")
+            var divNome = document.createElement("div")
+            var divDescricao = document.createElement("div")
+
+            divNome.innerHTML = `${publicacao.nome}:`;
+            divDescricao.innerHTML = publicacao.descricao;
+
+            divPublicacao.className = "publicacao"
+            divNome.className = "nome";
+            divDescricao.className = "descricao";
+
+            divPublicacao.appendChild(divNome);
+            divPublicacao.appendChild(divDescricao);
+
+            feed.appendChild(divPublicacao);
+        }
+    }
+
+    function obterPublicacoes() {
+        aguardar();
+        fetch("/publicacoes")
+        .then(resposta => {
+            if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                   
+                    atualizarFeed(resposta);
+
+                    finalizarAguardar();
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                finalizarAguardar("Nenhum resultado encontrado ou erro na API");
+            }
+        })
+        .catch(function (error) {
+            console.error(`Erro na obtenção das publicações: ${error.message}`);
+        });
+    }
+
+    function obterPublicacoesPorUsuario(idUsuario) {
+        fetch(`/publicacoes/${idUsuario}`)
+        .then(resposta => {
+            if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    // alert(JSON.stringify(resposta))
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+        .catch(function (error) {
+            console.error(`Erro na obtenção das publicações do usuário: ${error.message}`);
+        });
+    }
+
+    function aguardar() {
+        btn_publicar.disabled = true;
+        img_aguarde.style.visibility = 'visible';
+        div_erro.style.visibility = 'hidden';
+    }
+
+    function finalizarAguardar(resposta) {
+        btn_publicar.disabled = false;
+        img_aguarde.style.visibility = 'hidden';
+        if (resposta) {
+            div_erro.style.visibility = 'visible';
+            div_erro.innerHTML = resposta;
+        }
+    }
+
+    verificar_autenticacao();
+
 </script>
