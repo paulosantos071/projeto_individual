@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./CSS/cadastro.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- CABEÇALHO DO SITE -->
+
+    <div id="cabeçalho">
+
+        <div id="div_logo">
+            <img src="./imagens/logo_pag.jpeg" alt="">
+        </div>
+
+        <div id="div_bottom_cadastro">
+            <img src="./imagens/cadastro.png" alt="">
+            <h5><a href="cadastro.html">Cadastro</a>  </h5>
+        </div>
+
+        <div id="div_bottom_login">
+            <img src="./imagens/login.png" alt="">
+            <h5><a href="login.html">Login</a></h5>
+        </div>
+
+    </div>
+
+    <!-- CONTEUDO DO CADASTRO -->
+
+
+
+    <div id="conteudo">
+
+        <div id="subconteudo">
+
+            <div id="cont_titulo">
+                <h4>CADASTRO</h4>
+            </div>
+
+            <div id="div_linha"></div>
+
+            <div id="div_cadastro">
+                <form id="form_cadastro" method="post" onsubmit="return cadastrar()">
+                    <h5>Nome completo</h5>  
+                    <input type="text" name="nome" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome" required minlength="4">
+                    
+                    <h5>E-mail</h5> 
+                    <input type="text" name="login" class="input-padrao" placeholder="seu nome de usuário" required minlength="4">
+                    
+                    <h5>Senha</h5> 
+                    <input type="password" name="senha" class="input-padrao" placeholder="***************" required minlength="4">
+                    
+                        
+                    <input type="submit" id="btn_entrar" value="Cadastrar" class="btn-green">
+                </form>
+            </div>
+
+            <img src="aguarde-orange.gif" id="img_aguarde" style="display: none; width:100px">
+
+            <div id="div_erro" style="background-color: sandybrown; color: maroon; display: none;">
+                Erro no cadastro
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>
+
+
+<script>
+    function cadastrar() {
+        aguardar();
+        var formulario = new URLSearchParams(new FormData(form_cadastro));
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            body: formulario
+        }).then(function (response) {
+
+            if (response.ok) {
+
+                window.location.href = 'login.html';
+
+            } else {
+
+                console.log('Erro de cadastro!');
+                response.text().then(function (resposta) {
+                    div_erro.innerHTML = resposta;
+                });
+                finalizar_aguardar();
+            }
+        });
+
+        return false;
+    }
+
+    function aguardar() {
+        btn_entrar.disabled = true;
+        img_aguarde.style.display = 'block';
+        div_erro.style.display = 'none';
+    }
+
+    function finalizar_aguardar() {
+        btn_entrar.disabled = false;
+        img_aguarde.style.display = 'none';
+        div_erro.style.display = 'block';
+    }
+</script>
