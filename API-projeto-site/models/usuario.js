@@ -27,6 +27,18 @@ module.exports = (sequelize, DataTypes) => {
 			field: 'senha',
 			type: DataTypes.STRING,
 			allowNull: false
+		},
+		updatedAt:{
+			field: 'updatedAt',
+			defaultValue: data(),
+			type: DataTypes.DATE,
+			allowNull: false
+		},
+		createdAt:{
+			field: 'createdAt',
+			defaultValue: data(),
+			type: DataTypes.DATE,
+			allowNull: false
 		}
 	}, 
 	{
@@ -38,3 +50,10 @@ module.exports = (sequelize, DataTypes) => {
 
     return Usuario;
 };
+
+
+function data(){
+	var dataAtual = new Date();
+	dataAtual.setHours(dataAtual.getHours()-3)
+	return dataAtual;
+}

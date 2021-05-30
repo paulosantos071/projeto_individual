@@ -13,8 +13,13 @@ module.exports = (sequelize, DataTypes) => {
 			primaryKey: true,
 			autoIncrement: true
 		},	
-        descricao: {
-            field: 'descricao',
+        titulo: {
+            field: 'titulo',
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+		receita: {
+            field: 'receita',
             type: DataTypes.STRING,
             allowNull: false
         },
@@ -22,7 +27,13 @@ module.exports = (sequelize, DataTypes) => {
             field: 'fkUsuario',
             type: DataTypes.INTEGER,
             allowNull: false
-        }
+        },
+		createdAt:{
+			field: 'createdAt',
+			defaultValue: data(),
+			type: DataTypes.DATE,
+			allowNull: false
+		}
 	}, 
 	{
 		tableName: 'publicacao', 
@@ -33,3 +44,10 @@ module.exports = (sequelize, DataTypes) => {
 
     return Publicacao;
 };
+
+
+function data(){
+	var dataAtual = new Date();
+	dataAtual.setHours(dataAtual.getHours()-3)
+	return dataAtual;
+}
