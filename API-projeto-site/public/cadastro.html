@@ -10,30 +10,20 @@
 </head>
 
 <body>
+    <!-- DIV CABEÇALHO -->
 
-    <!-- CABEÇALHO DO SITE -->
-
-    <div id="cabeçalho">
-
+    <div id="cabecalho">
         <div id="div_logo">
-            <img src="./imagens/logo_pag.jpeg" alt="">
+            <img src="./imagens/login/logo.png" alt="">
         </div>
-
-        <div id="div_bottom_cadastro">
-            <img src="./imagens/cadastro.png" alt="">
-            <h5><a href="cadastro.html">Cadastro</a>  </h5>
-        </div>
-
-        <div id="div_bottom_login">
-            <img src="./imagens/login.png" alt="">
-            <h5><a href="login.html">Login</a></h5>
-        </div>
+        <ul>
+            <li><a href="cadastro.html">Cadastro</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
 
     </div>
 
-    <!-- CONTEUDO DO CADASTRO -->
-
-
+    <!-- DIV CONTEUDO -->
 
     <div id="conteudo">
 
@@ -54,7 +44,7 @@
                     <input type="text" name="login" class="input-padrao" placeholder="seu nome de usuário" required minlength="4">
                     
                     <h5>Senha</h5> 
-                    <input type="password" name="senha" class="input-padrao" placeholder="***************" required minlength="4">
+                    <input type="password" name="senha" class="input-padrao" placeholder="***************" required minlength="4"> <br>
                     
                         
                     <input type="submit" id="btn_entrar" value="Cadastrar" class="btn-green">
@@ -70,10 +60,11 @@
         </div>
 
     </div>
+
+
 </body>
 
 </html>
-
 
 <script>
     function cadastrar() {

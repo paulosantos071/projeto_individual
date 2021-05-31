@@ -6,287 +6,117 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./CSS/usuario.css">
-    <title>Document</title>
+    <title id="titulo_pagina">USUARIO</title>
 </head>
 
 <body>
-
-    <script type="text/javascript" src="funcoes.js"></script>
-
-    <div id="telatotal">
-        <!-- DIV DO LADO ESQUERDO -->
-
-        <div id="div_left">
-
-            <div id="div_button_perfil">
-
-                <img src="./imagens/usu_perfil.png" alt="" onclick="aparecer_perfil()">
-
-            </div>
-
-            <div id="div_button_inicial">
-
-                <img src="./imagens/feed.png" alt="" onclick="aparecer_feed()">
-
-            </div>
-
+    <!-- SCRIPT DAS FUNÇÕES JS -->
+    <script type="text/javascript" src="./funcoes.js"></script>
+    <!-- DIV DO MENU ESQUERDO DO FEED-->
+    <div id="left_1">
+        <div id="painel_publicacao">
+            <img src="./imagens/usuario/painel-publicitario 1.svg" onclick="aparecer_feed()" alt="">
         </div>
-
-        <!-- DIV DO LADO DIREITO -->
-
-        <div id="div_right">
-
-            <!-- PARTE SUPERIOR -->
-
-            <div id="div_right_sup">
-                <div id="div_loggout">
-                    <ul>
-                        <li><a href="#" class="highlight" onclick="logoff()">LOGOUT</a></li>
-                    </ul>
-                </div>
-
+        <div id="perfil_usuario">
+            <img src="./imagens/usuario/perfil-de-usuario 1.svg" onclick="aparecer_perfil()" alt="">
+        </div>
+        <div id="logout">
+            <img src="./imagens/usuario/logout 1.svg" alt="">
+        </div>
+    </div>
+    <!-- DIV DO CONTEUDO DIREITO DO FEED-->
+    <div id="rigth_feed" style="display: block;">
+        <div id="div_topo">
+            <div id="div_logo">
+                <img src="./imagens/usuario/image 2.svg" alt="">
             </div>
-
-            <!-- CONTEUDO DA TELA DO USUARIO -->
-
-            <div id="iconteudo_usuario" style="display: block;">
-
-                <div id="div_conteudo_usuario">
-
-                    <div id="parte01">
-
-                        <div id="imagem_usuario">
-                            <img src="./imagens/imagem_usuario_ilustrativa.png" alt="">
-                        </div>
-
-                    </div>
-
-                    <div id="div_divisoria"></div>
-
-                    <div id="parte02">
-                        <h2>DADOS DO USUARIO</h2>
-
-                        <div id="nome_usuario" class="usuario">
-                          <h4 id="b_usuario"> </h4> 
-                        </div>
-
-                        <div id="div_usuario_flex">
-
-                            <div id="dataNasc_usuario">
-                                <h4></h4>
-                            </div>
-
-                            <div id="cpf_usuario">
-                                <h4></h4>
-                            </div>
-
-                        </div>
-
-                        <div id="email_usuario">
-                            <h4 id="b_email"></h4>
-                        </div>
-
-                        <div id="div_linha_endereco"></div>
-
-                        <div id="endereco_caixa1">
-                            <div id="CEP_usuario">
-                                <h4></h4>
-                            </div>
-
-                            <div id="endreco_usuario">
-                                <h4></h4>
-                            </div>
-
-                            <div id="numero_usuario">
-                                <h4></h4>
-                            </div>
-                            <div id="bairro_usuario">
-                                <h4></h4>
-                            </div>
-                        </div>
-
-
-                        <div id="endereco_caixa2">
-                            <div id="estado_usuario">
-                                <h4></h4>
-                            </div>
-
-                            <div id="cidade_usuario">
-                                <h4></h4>
-                            </div>
-                        </div>
-
-                        <button onclick="alterar()">ALTERAR DADOS</button>
-
-
-                    </div>
-
-                </div>
-
+            <div id="div_logo_publicacao">
+                <img src="./imagens/usuario/livro-de-receitas 1.svg" alt="">
             </div>
-
-            <!-- CONTEUDO DO FEED DE RECITAS -->
-
-
-            <div id="conteudo_receitas" style="display: none;">
-
-                
-
-                <div id="div_tituloreceita">
-                    <img src="./imagens/img_comida.png" alt="">
-                    <h3>ESCREVA A SUA RECEITA ABAIXO</h3>
+        </div>
+        <div id="div_restante">
+            <form action="" id="div_publicacao">
+                <div id="div_titlo_receita">
+                    <h3>TITULO DA RECEITA</h3>
+                    <input>
                 </div>
-
-                
-                <form id="form_publicar" method="post" onsubmit="return publicar()">
-                    <div id="informartitulo">
-                        <h5>INFORME O TITULO</h5>
-
-                        <input type="text" name="titulo" placeholder="TITULO">
-                    </div>
-
-                    <div id="informarreceita">
-                        <h5>INFORME A RECEITA</h5>
-
-                        <textarea rows="10" name="receita" cols="40"  maxlength="1500"></textarea>
-                    </div>
-
-                    <button id="btn_publicar">ENVIAR A RECEITA</button>
-
-                </form>
-                <img src="aguarde-orange.gif" id="img_aguarde"> 
+                <div id="div_conteudo_receita">
+                    <h3>CONTEUDO DA RECEITA</h3>
+                    <textarea id="" class="textarea-padrao" name="descricao"></textarea>
+                </div>
+                <div id="div_button">
+                    <button>PUBLICAR</button>
+                </div>
+            </form>
+        </div>
+    </div>
+     <!-- DIV DO MENU ESQUERDO DO PERFIL-->
+     <div id="left_1" style="display: none;">
+        <div id="painel_publicacao">
+            <img src="./imagens/usuario/painel-publicitario 1.svg" onclick="aparecer_feed()" alt="">
+        </div>
+        <div id="perfil_usuario">
+            <img src="./imagens/usuario/perfil-de-usuario 1.svg" onclick="aparecer_perfil()" alt="">
+        </div>
+        <div id="logout">
+            <img src="./imagens/usuario/logout 1.svg" alt="">
+        </div>
+    </div>
+    <!-- DIV DO CONTEUDO DIREITO DO PERFIL -->
+    <div id="rigth_perfil" style="display: none;">
+        <div id="div_foto">
+            <img src="./imagens/usuario/usuario-masculino 1.svg" alt="">
+        </div>
+        <div id="div_nome">
+            <h4>Nome</h4>
+            <div id="nome"><b id="b_nome"></b></div>
+        </div>
+        <div id="div_email">
+            <h4>E-mail</h4>
+            <div id="email"><b id="b_email"></b></div>
+        </div>
+        <div id="div_data_sexo">
+            <div id="data_sexo">
+                <h4>Data Nacimento</h4>
+                <h4>Sexo</h4>
             </div>
-
-
+            <div id="data_sexo_escrito">
+                <div id="dataNasc"></div>
+                <div id="sexo"></div>
+            </div>
+            <div id="div_cpf">
+                <h4>CPF</h4>
+                <div id="cpf"></div>
+            </div>
+            <div id="div_logo_perfil">
+                <img src="./imagens/login/logo.png" alt="">
+            </div>
 
         </div>
     </div>
-
 </body>
 
 </html>
 
 <script>
-    function aparecer_feed() {
-        iconteudo_usuario.style.display = 'none'
-        conteudo_receitas.style.display = 'block'
-
-
-    }
-
     function aparecer_perfil() {
-        iconteudo_usuario.style.display = 'block'
-        conteudo_receitas.style.display = 'none'
-    }
-</script>
-
-
-<script>
-
-    function publicar() {
-        console.log("entrei!")
-        aguardar();
-        var formulario = new URLSearchParams(new FormData(form_publicar));
-        var idUsuario = sessionStorage.id_usuario_meuapp;
-        fetch(`/publicacoes/publicar/${idUsuario}`, {
-            method: "POST",
-            body: formulario
-        }).then(resposta => {
-
-            if (resposta.ok) {
-                obterPublicacoes();
-
-                finalizarAguardar();
-            } else {
-                console.log('Erro ao publicar!');
-                resposta.text().then(texto => {
-                    console.error(texto);
-                    finalizarAguardar(texto);
-                });
-            }
-        });
-
-        return false;
+        rigth_perfil.style.display = 'block'
+        rigth_feed.style.display = 'none'
+        left.style.display = 'none'
+        left_1.style.display = 'block'
+        if (document.title != 'Feed de Receitas') {
+    document.title = 'Perfil do Usuario';
+}
     }
 
-    function atualizarFeed(publicacoes) {
-        var feed = document.getElementById("feed_container");
-        feed.innerHTML = "";
-        for (let i = 0; i < publicacoes.length; i++) {
-            var publicacao = publicacoes[i];
+    function aparecer_feed() {
+        rigth_perfil.style.display = 'none'
+        rigth_feed.style.display = 'block'
+        left_1.style.display = 'none'
+        left.style.display = 'block'
+        
 
-            var divPublicacao = document.createElement("div")
-            var divNome = document.createElement("div")
-            var divDescricao = document.createElement("div")
-
-            divNome.innerHTML = `${publicacao.nome}:`;
-            divDescricao.innerHTML = publicacao.descricao;
-
-            divPublicacao.className = "publicacao"
-            divNome.className = "nome";
-            divDescricao.className = "descricao";
-
-            divPublicacao.appendChild(divNome);
-            divPublicacao.appendChild(divDescricao);
-
-            feed.appendChild(divPublicacao);
-        }
-    }
-
-    function obterPublicacoes() {
-        aguardar();
-        fetch("/publicacoes")
-        .then(resposta => {
-            if (resposta.ok) {
-                resposta.json().then(function (resposta) {
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                   
-                    atualizarFeed(resposta);
-
-                    finalizarAguardar();
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-                finalizarAguardar("Nenhum resultado encontrado ou erro na API");
-            }
-        })
-        .catch(function (error) {
-            console.error(`Erro na obtenção das publicações: ${error.message}`);
-        });
-    }
-
-    function obterPublicacoesPorUsuario(idUsuario) {
-        fetch(`/publicacoes/${idUsuario}`)
-        .then(resposta => {
-            if (resposta.ok) {
-                resposta.json().then(function (resposta) {
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                    // alert(JSON.stringify(resposta))
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-            }
-        })
-        .catch(function (error) {
-            console.error(`Erro na obtenção das publicações do usuário: ${error.message}`);
-        });
-    }
-
-    function aguardar() {
-        btn_publicar.disabled = true;
-        img_aguarde.style.visibility = 'visible';
-        div_erro.style.visibility = 'hidden';
-    }
-
-    function finalizarAguardar(resposta) {
-        btn_publicar.disabled = false;
-        img_aguarde.style.visibility = 'hidden';
-        if (resposta) {
-            div_erro.style.visibility = 'visible';
-            div_erro.innerHTML = resposta;
-        }
     }
 
     verificar_autenticacao();
-
 </script>

@@ -1,87 +1,108 @@
 body{
-    margin: 0%;
-    width: 100;
-    background-image: url(../imagens/Desktop\ -\ 1.png);
-    background-repeat: no-repeat;
-    background-size: cover;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0%;
 }
 
-#div_cabecalho{
-    width: 1000px;
-    height: 70px;
-    background-color: rgba(243, 0, 0, 0.801);
-    margin-left: 170px;
-    border-radius: 0px 0px 20px 20px;
-    position: fixed;
-    margin-top: -100px;
+/* CABEÇALHO DO SITE */
+
+#div_logo{
+    margin-left: auto;
+    margin-right: auto;
+    width: 18em;
 }
 
-#menu_bar{
-    display: flex;
-    margin-left: 250px;
-    margin-top: 10px;
-    cursor: pointer;
-    
-}
-
-#menu_bar ul{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin-left: 20px;
-    color: black;
-}
-
-#menu_bar ul a{
-    text-decoration: none;
-    color: black;
-}
-
-#menu_bar ul:hover{
-    background-color: blue;
-    border-width: 2px;
-    border-style: groove;
-    border-color: black;
-}
-
-#div_conteudo{
-    width: 700px;
-    height: 800px;
-    background-color: white;
-    margin-top: 40px;
-    margin-left: 320px;
-    border-radius: 0px 0px 20px 20px;
-    margin-top: 100px;
-}
-
-#div_conteudo_superior{
-    /* background-color: red; */
+#div_menu{
+    background-color:#FFF6E0;
     width: 100%;
-    height: 8%;
+    height: 50px;
+    margin-left: auto;
+    margin-right: auto;
     padding-top: 10px;
 }
 
+#div_menu ul{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    width: 68em;
+    padding-left: 60px;
+    list-style: none;
+    
+}
 
-#divBusca{
-    background-color:#a5adad;
-    border:solid 1px;
-    border-radius:15px;
-    width:300px;
-    margin-left: 180px;
-  
-  }
+#div_menu ul li a{
+    padding-left: 200px;
+    font-family: Roboto;
+    color: #502C14;
+    text-decoration: none;   
+}
+
+#div_menu ul li a:hover{
+    text-decoration: underline;
+}
+
+/* CONTEUDO DO SITE */
+
+#conteudo{
+    background-image: url(../imagens/home/fundo_home.png);
+    width: 100%;
+    height: 460px;
+    display: flex;
+}
+
+#div_esquerda{
+    width: 35%;
+    height: 460px;
+    /* background-color: blue; */
+}
+
+#div_esquerda img{
+    margin-left: 55%;
+    margin-top: 25%;
+}
+
+#div_direita{
+    width: 65%;
+    height: 460px;
+    /* background-color: red; */
+}
+
+#div_direita h2{
+    margin-left: 10%;
+    margin-top: 18%;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    /* font-weight: bold; */
+    color: #FFF6E0;
+    font-size: 30px;
+}
+
+#div_direita button{
+    cursor: pointer;
+    margin-left: 10%;
+    border: none;
+    width: 150px;
+    height: 40px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    background: #E38E01;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 40px;
+}
+
+#div_direita button:hover{
+    background: #aa6902;
+}
 
 
-  
-  #txtBusca{
-    float:left;
-    background-color:transparent;
-    padding-left:5px;
-    font-style:italic;
-    font-size:18px;
-    border:none;
-    height:32px;
-    width:260px;
-  }
 
-  #divBusca img{
-      width: 29px;
-  }
+/* RODAPÉ DO SITE */
+
+#rodape{
+    width: 100%;
+    height: 200px;
+    background-color: rgb(102, 53, 19);
+}
+
+
+

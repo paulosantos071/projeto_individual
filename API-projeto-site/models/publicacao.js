@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
 			primaryKey: true,
 			autoIncrement: true
 		},	
-        titulo: {
+        tituloReceita: {
             field: 'titulo',
             type: DataTypes.STRING,
             allowNull: false
@@ -36,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
 		}
 	}, 
 	{
-		tableName: 'publicacao', 
+		tableName: 'receita', 
 		freezeTableName: true, 
 		underscored: true,
 		timestamps: false,
