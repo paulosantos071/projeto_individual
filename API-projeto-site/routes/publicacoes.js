@@ -11,6 +11,8 @@ router.post('/publicar/:idUsuario', function(req, res, next) {
 
     Publicacao.create({
         titulo: req.body.titulo,
+        tipoReceita : req.body.tipo,
+        ingredientes : req.body.ingredientes,
         tituloReceita: req.body.tituloReceita,
         receita: req.body.receita,
         fkUsuario: idUsuario
@@ -29,8 +31,8 @@ router.get('/', function(req, res, next) {
 	console.log('Recuperando todas as publicações');
 	
     let instrucaoSql = `SELECT 
-    usuario.nome,
-    tituloReceita, receita
+    usuario.nome,tipoReceita,
+    tituloReceita, ingredientes, receita
     FROM receita
     INNER JOIN usuario
     ON receita.fkUsuario = Usuario.id

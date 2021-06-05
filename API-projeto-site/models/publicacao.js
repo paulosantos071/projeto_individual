@@ -12,9 +12,19 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.INTEGER,
 			primaryKey: true,
 			autoIncrement: true
-		},	
+		},
+		tipoReceita: {
+			field: 'tipoReceita',
+            type: DataTypes.STRING,
+            allowNull: false
+		},		
         tituloReceita: {
             field: 'tituloReceita',
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+		ingredientes: {
+            field: 'ingredientes',
             type: DataTypes.STRING,
             allowNull: false
         },

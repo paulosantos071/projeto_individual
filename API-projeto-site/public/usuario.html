@@ -37,9 +37,22 @@
         </div>
         <div id="div_restante">
             <form id="form_publicar" method="post" onsubmit="return publicar()">
+                <div id="div_tipo_receita">
+                    <h3>SELECIONE UMA OPÇÃO</h3>
+                    <select name="tipoReceita" type="text" class="box">
+                        <option hidden>-- SELECIONE --</option>
+                        <option value="SALGADO">SALGADO</option>
+                        <option value="DOCE">DOCE</option>
+                        <option value="AGRIDOCE">AGRIDOCE</option>
+                    </select>
+                </div>
                 <div id="div_titlo_receita">
                     <h3>TITULO DA RECEITA</h3>
                     <input id="tituloReceita" name="tituloReceita">
+                </div>
+                <div id="div_ingredientes_receita">
+                    <h3>INGREDIENTES</h3>
+                    <input id="ingredientesReceita" name="ingredientes">
                 </div>
                 <div id="div_conteudo_receita">
                     <h3>CONTEUDO DA RECEITA</h3>
@@ -49,18 +62,20 @@
                     <button id="btn_publicar">PUBLICAR</button>
                 </div>
             </form>
+            
+        </div>
+        <div class="feed">
             <div class="extra">
                 <div id="div_erro" class="msg_erro">
                 </div>
                 <img src="aguarde-orange.gif" style="display: none;" id="img_aguarde"> 
             </div>
-        </div>
-        <div class="feed">
             <h1>Publicações</h1>
             <div id="feed_container" class="container">
             </div>
         </div>
     </div>
+    
      <!-- DIV DO MENU ESQUERDO DO PERFIL-->
      <div id="left_1" style="display: none;">
         <div id="painel_publicacao" >
@@ -114,6 +129,7 @@
 
 verificar_autenticacao();
 
+
     function publicar() {
         console.log("entrei!")
         aguardar();
@@ -147,22 +163,31 @@ verificar_autenticacao();
             var publicacao = publicacoes[i];
 
             var divPublicacao = document.createElement("div")
+            var divTipo = document.createElement("div")
             var divNome = document.createElement("div")
-            var divTitulor = document.createElement("div")
+            var divTitulor = document.createElement("div") 
+            var divIngredientes = document.createElement("div")
             var divDescricao = document.createElement("div")
 
             divNome.innerHTML = `${publicacao.nome}:`;
-            divTitulor.innerHTML = publicacao.tituloReceita
+            divTipo.innerHTML = publicacao.tipoReceita;
+            divTitulor.innerHTML = publicacao.tituloReceita;
+            divIngredientes.innerHTML = publicacao.ingredientes
             divDescricao.innerHTML = publicacao.receita;
 
             divPublicacao.className = "publicacao"
+            divTipo.className = "tipoReceita"
             divTitulor.className = "tituloReceita"
+            divIngredientes.className = "Ingredientes"
             divNome.className = "nome";
             divDescricao.className = "descricao";
 
             divPublicacao.appendChild(divNome);
+            divPublicacao.appendChild(divTipo);
             divPublicacao.appendChild(divTitulor);
+            divPublicacao.appendChild(divIngredientes);
             divPublicacao.appendChild(divDescricao);
+            
 
             feed.appendChild(divPublicacao);
         }
@@ -229,7 +254,7 @@ verificar_autenticacao();
     function aparecer_perfil() {
         rigth_perfil.style.display = 'block'
         rigth_feed.style.display = 'none'
-        // left.style.display = 'none'
+        left.style.display = 'none'
         left_1.style.display = 'block'
         if (document.title != 'Feed de Receitas') {
     document.title = 'Perfil do Usuario';
