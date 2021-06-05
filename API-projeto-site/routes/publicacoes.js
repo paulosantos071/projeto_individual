@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var sequelize = require('../models').sequelize;
-var Publicacao = require('../models').usuario;
+var Publicacao = require('../models').Publicacao;
 
 /* ROTA QUE RECUPERA CRIA UMA PUBLICAÇÃO */
 router.post('/publicar/:idUsuario', function(req, res, next) {
@@ -9,9 +9,9 @@ router.post('/publicar/:idUsuario', function(req, res, next) {
     
 	let idUsuario = req.params.idUsuario;
 
-    receita.create({
+    Publicacao.create({
         titulo: req.body.titulo,
-        tituloReceita: req.body.titulo,
+        tituloReceita: req.body.tituloReceita,
         receita: req.body.receita,
         fkUsuario: idUsuario
     }).then(resultado => {
@@ -30,14 +30,14 @@ router.get('/', function(req, res, next) {
 	
     let instrucaoSql = `SELECT 
     usuario.nome,
-    titulo, receita
+    tituloReceita, receita
     FROM receita
     INNER JOIN usuario
     ON receita.fkUsuario = Usuario.id
     ORDER BY receita.id DESC`;
 
 	sequelize.query(instrucaoSql, {
-		model: usuario,
+		model: Publicacao,
 		mapToModel: true 
 	})
 	.then(resultado => {
@@ -58,12 +58,12 @@ router.get('/:idUsuario', function(req, res, next) {
 
     let instrucaoSql = `SELECT 
     usuario.nome,
-    titulo, receita
-    FROM publicacao
+    tituloReceita, receita
+    FROM receita
     INNER JOIN usuario
-    ON Publicacao.fkUsuario = Usuario.id
+    ON receita.fkUsuario = Usuario.id
     WHERE fkUsuario = ${idUsuario}
-    ORDER BY publicacao.id DESC`;
+    ORDER BY receita.id DESC`;
 
 	sequelize.query(instrucaoSql, {
 		model: Publicacao,

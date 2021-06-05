@@ -14,7 +14,7 @@
 
     <div id="cabecalho">
         <div id="div_logo">
-            <img src="./imagens/login/logo.png" alt="">
+            <a href="./index.html"> <img src="./imagens/login/logo.png" alt=""></a>
         </div>
         <ul>
             <li><a href="cadastro.html">Cadastro</a></li>
@@ -62,8 +62,8 @@
 </html>
 
 <script>
-    
-    function entrar() {
+   
+   function entrar() {
         aguardar();
         var formulario = new URLSearchParams(new FormData(form_login));
         fetch("/usuarios/autenticar", {
@@ -74,10 +74,10 @@
             if (resposta.ok) {
 
                 resposta.json().then(json => {
-
                     sessionStorage.login_usuario_meuapp = json.login;
-                    sessionStorage.nome_usuario_meuapp = json.nome;
-                    sessionStorage.id_usuario_meuapp = json.id;
+                    sessionStorage.nome_usuario_meuapp = json.dataNac;
+                    sessionStorage.id_usuario_meuapp = json.ID; 
+                    sessionStorage.dataNasc_usuario_meuapp
 
                     window.location.href = 'usuario.html';
                 });

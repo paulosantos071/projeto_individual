@@ -9,19 +9,20 @@
     <title id="titulo_pagina">USUARIO</title>
 </head>
 
-<body>
+<body onload="obterPublicacoes()">
     <!-- SCRIPT DAS FUNÇÕES JS -->
     <script type="text/javascript" src="./funcoes.js"></script>
     <!-- DIV DO MENU ESQUERDO DO FEED-->
     <div id="left_1">
         <div id="painel_publicacao">
             <img src="./imagens/usuario/painel-publicitario 1.svg" onclick="aparecer_feed()" alt="">
+            <h3 style="display: none;">FEED DE RECEITAS</h3>
         </div>
         <div id="perfil_usuario">
             <img src="./imagens/usuario/perfil-de-usuario 1.svg" onclick="aparecer_perfil()" alt="">
         </div>
         <div id="logout">
-            <img src="./imagens/usuario/logout 1.svg" alt="">
+            <img src="./imagens/usuario/logout 1.svg" onclick="logoff()" alt="">
         </div>
     </div>
     <!-- DIV DO CONTEUDO DIREITO DO FEED-->
@@ -35,31 +36,41 @@
             </div>
         </div>
         <div id="div_restante">
-            <form action="" id="div_publicacao">
+            <form id="form_publicar" method="post" onsubmit="return publicar()">
                 <div id="div_titlo_receita">
                     <h3>TITULO DA RECEITA</h3>
-                    <input>
+                    <input id="tituloReceita" name="tituloReceita">
                 </div>
                 <div id="div_conteudo_receita">
                     <h3>CONTEUDO DA RECEITA</h3>
-                    <textarea id="" class="textarea-padrao" name="descricao"></textarea>
+                    <textarea id="" class="textarea-padrao" style="resize: none;" name="receita"></textarea>
                 </div>
                 <div id="div_button">
-                    <button>PUBLICAR</button>
+                    <button id="btn_publicar">PUBLICAR</button>
                 </div>
             </form>
+            <div class="extra">
+                <div id="div_erro" class="msg_erro">
+                </div>
+                <img src="aguarde-orange.gif" style="display: none;" id="img_aguarde"> 
+            </div>
+        </div>
+        <div class="feed">
+            <h1>Publicações</h1>
+            <div id="feed_container" class="container">
+            </div>
         </div>
     </div>
      <!-- DIV DO MENU ESQUERDO DO PERFIL-->
      <div id="left_1" style="display: none;">
-        <div id="painel_publicacao">
+        <div id="painel_publicacao" >
             <img src="./imagens/usuario/painel-publicitario 1.svg" onclick="aparecer_feed()" alt="">
         </div>
         <div id="perfil_usuario">
             <img src="./imagens/usuario/perfil-de-usuario 1.svg" onclick="aparecer_perfil()" alt="">
         </div>
         <div id="logout">
-            <img src="./imagens/usuario/logout 1.svg" alt="">
+            <img src="./imagens/usuario/logout 1.svg" onclick="logoff()" alt="">
         </div>
     </div>
     <!-- DIV DO CONTEUDO DIREITO DO PERFIL -->
@@ -98,11 +109,127 @@
 
 </html>
 
+
+<script>
+
+verificar_autenticacao();
+
+    function publicar() {
+        console.log("entrei!")
+        aguardar();
+        var formulario = new URLSearchParams(new FormData(form_publicar));
+        var idUsuario = sessionStorage.id_usuario_meuapp;
+        fetch(`/publicacoes/publicar/${idUsuario}`, {
+            method: "POST",
+            body: formulario
+        }).then(resposta => {
+
+            if (resposta.ok) {
+                obterPublicacoes();
+
+                finalizarAguardar();
+            } else {
+                console.log('Erro ao publicar!');
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+        });
+
+        return false;
+    }
+
+    function atualizarFeed(publicacoes) {
+        var feed = document.getElementById("feed_container");
+        feed.innerHTML = "";
+        for (let i = 0; i < publicacoes.length; i++) {
+            var publicacao = publicacoes[i];
+
+            var divPublicacao = document.createElement("div")
+            var divNome = document.createElement("div")
+            var divTitulor = document.createElement("div")
+            var divDescricao = document.createElement("div")
+
+            divNome.innerHTML = `${publicacao.nome}:`;
+            divTitulor.innerHTML = publicacao.tituloReceita
+            divDescricao.innerHTML = publicacao.receita;
+
+            divPublicacao.className = "publicacao"
+            divTitulor.className = "tituloReceita"
+            divNome.className = "nome";
+            divDescricao.className = "descricao";
+
+            divPublicacao.appendChild(divNome);
+            divPublicacao.appendChild(divTitulor);
+            divPublicacao.appendChild(divDescricao);
+
+            feed.appendChild(divPublicacao);
+        }
+    }
+
+    function obterPublicacoes() {
+        aguardar();
+        fetch("/publicacoes")
+        .then(resposta => {
+            if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                   
+                    atualizarFeed(resposta);
+
+                    finalizarAguardar();
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                finalizarAguardar("Nenhum resultado encontrado ou erro na API");
+            }
+        })
+        .catch(function (error) {
+            console.error(`Erro na obtenção das publicações: ${error.message}`);
+        });
+    }
+
+    function obterPublicacoesPorUsuario(idUsuario) {
+        fetch(`/publicacoes/${idUsuario}`)
+        .then(resposta => {
+            if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    // alert(JSON.stringify(resposta))
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+        .catch(function (error) {
+            console.error(`Erro na obtenção das publicações do usuário: ${error.message}`);
+        });
+    }
+
+    function aguardar() {
+        btn_publicar.disabled = true;
+        img_aguarde.style.visibility = 'visible';
+        div_erro.style.visibility = 'hidden';
+    }
+
+    function finalizarAguardar(resposta) {
+        btn_publicar.disabled = false;
+        img_aguarde.style.visibility = 'hidden';
+        if (resposta) {
+            div_erro.style.visibility = 'visible';
+            div_erro.innerHTML = resposta;
+        }
+    }
+
+
+</script> -->
+
 <script>
     function aparecer_perfil() {
         rigth_perfil.style.display = 'block'
         rigth_feed.style.display = 'none'
-        left.style.display = 'none'
+        // left.style.display = 'none'
         left_1.style.display = 'block'
         if (document.title != 'Feed de Receitas') {
     document.title = 'Perfil do Usuario';
@@ -118,5 +245,4 @@
 
     }
 
-    verificar_autenticacao();
 </script>

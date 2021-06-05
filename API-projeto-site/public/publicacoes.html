@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt">
 
 <head>
@@ -29,8 +29,7 @@
 </head>
 
 <body onload="obterPublicacoes()">
-    <!--header inicio-->
-<!-- 
+   <!-- header inicio-->
     <div class="header">
         <div class="container">
             <h1 class="titulo"><span class="highlight">Projeto</span> IoT Revolucionário</h1>
@@ -52,7 +51,7 @@
     </div>
     <!--header fim-->
 
-    <!-- <div class="dashboard">
+     <div class="dashboard">
         <div class="container">
             <div class="post">
                 <h2>Faça uma publicação!</h2>
@@ -75,119 +74,119 @@
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
 
- -->
+
 
 </body>
 
 
 <script>
 
-    // function publicar() {
-    //     console.log("entrei!")
-    //     aguardar();
-    //     var formulario = new URLSearchParams(new FormData(form_publicar));
-    //     var idUsuario = sessionStorage.id_usuario_meuapp;
-    //     fetch(`/publicacoes/publicar/${idUsuario}`, {
-    //         method: "POST",
-    //         body: formulario
-    //     }).then(resposta => {
+    function publicar() {
+        console.log("entrei!")
+        aguardar();
+        var formulario = new URLSearchParams(new FormData(form_publicar));
+        var idUsuario = sessionStorage.id_usuario_meuapp;
+        fetch(`/publicacoes/publicar/${idUsuario}`, {
+            method: "POST",
+            body: formulario
+        }).then(resposta => {
 
-    //         if (resposta.ok) {
-    //             obterPublicacoes();
+            if (resposta.ok) {
+                obterPublicacoes();
 
-    //             finalizarAguardar();
-    //         } else {
-    //             console.log('Erro ao publicar!');
-    //             resposta.text().then(texto => {
-    //                 console.error(texto);
-    //                 finalizarAguardar(texto);
-    //             });
-    //         }
-    //     });
+                finalizarAguardar();
+            } else {
+                console.log('Erro ao publicar!');
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+        });
 
-    //     return false;
-    // }
+        return false;
+    }
 
-    // function atualizarFeed(publicacoes) {
-    //     var feed = document.getElementById("feed_container");
-    //     feed.innerHTML = "";
-    //     for (let i = 0; i < publicacoes.length; i++) {
-    //         var publicacao = publicacoes[i];
+    function atualizarFeed(publicacoes) {
+        var feed = document.getElementById("feed_container");
+        feed.innerHTML = "";
+        for (let i = 0; i < publicacoes.length; i++) {
+            var publicacao = publicacoes[i];
 
-    //         var divPublicacao = document.createElement("div")
-    //         var divNome = document.createElement("div")
-    //         var divDescricao = document.createElement("div")
+            var divPublicacao = document.createElement("div")
+            var divNome = document.createElement("div")
+            var divDescricao = document.createElement("div")
 
-    //         divNome.innerHTML = `${publicacao.nome}:`;
-    //         divDescricao.innerHTML = publicacao.descricao;
+            divNome.innerHTML = `${publicacao.nome}:`;
+            divDescricao.innerHTML = publicacao.descricao;
 
-    //         divPublicacao.className = "publicacao"
-    //         divNome.className = "nome";
-    //         divDescricao.className = "descricao";
+            divPublicacao.className = "publicacao"
+            divNome.className = "nome";
+            divDescricao.className = "descricao";
 
-    //         divPublicacao.appendChild(divNome);
-    //         divPublicacao.appendChild(divDescricao);
+            divPublicacao.appendChild(divNome);
+            divPublicacao.appendChild(divDescricao);
 
-    //         feed.appendChild(divPublicacao);
-    //     }
-    // }
+            feed.appendChild(divPublicacao);
+        }
+    }
 
-    // function obterPublicacoes() {
-    //     aguardar();
-    //     fetch("/publicacoes")
-    //     .then(resposta => {
-    //         if (resposta.ok) {
-    //             resposta.json().then(function (resposta) {
-    //                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+    function obterPublicacoes() {
+        aguardar();
+        fetch("/publicacoes")
+        .then(resposta => {
+            if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                    
-    //                 atualizarFeed(resposta);
+                    atualizarFeed(resposta);
 
-    //                 finalizarAguardar();
-    //             });
-    //         } else {
-    //             console.error('Nenhum dado encontrado ou erro na API');
-    //             finalizarAguardar("Nenhum resultado encontrado ou erro na API");
-    //         }
-    //     })
-    //     .catch(function (error) {
-    //         console.error(`Erro na obtenção das publicações: ${error.message}`);
-    //     });
-    // }
+                    finalizarAguardar();
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                finalizarAguardar("Nenhum resultado encontrado ou erro na API");
+            }
+        })
+        .catch(function (error) {
+            console.error(`Erro na obtenção das publicações: ${error.message}`);
+        });
+    }
 
-    // function obterPublicacoesPorUsuario(idUsuario) {
-    //     fetch(`/publicacoes/${idUsuario}`)
-    //     .then(resposta => {
-    //         if (resposta.ok) {
-    //             resposta.json().then(function (resposta) {
-    //                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-    //                 // alert(JSON.stringify(resposta))
-    //             });
-    //         } else {
-    //             console.error('Nenhum dado encontrado ou erro na API');
-    //         }
-    //     })
-    //     .catch(function (error) {
-    //         console.error(`Erro na obtenção das publicações do usuário: ${error.message}`);
-    //     });
-    // }
+    function obterPublicacoesPorUsuario(idUsuario) {
+        fetch(`/publicacoes/${idUsuario}`)
+        .then(resposta => {
+            if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    // alert(JSON.stringify(resposta))
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+        .catch(function (error) {
+            console.error(`Erro na obtenção das publicações do usuário: ${error.message}`);
+        });
+    }
 
-    // function aguardar() {
-    //     btn_publicar.disabled = true;
-    //     img_aguarde.style.visibility = 'visible';
-    //     div_erro.style.visibility = 'hidden';
-    // }
+    function aguardar() {
+        btn_publicar.disabled = true;
+        img_aguarde.style.visibility = 'visible';
+        div_erro.style.visibility = 'hidden';
+    }
 
-    // function finalizarAguardar(resposta) {
-    //     btn_publicar.disabled = false;
-    //     img_aguarde.style.visibility = 'hidden';
-    //     if (resposta) {
-    //         div_erro.style.visibility = 'visible';
-    //         div_erro.innerHTML = resposta;
-    //     }
-    // }
+    function finalizarAguardar(resposta) {
+        btn_publicar.disabled = false;
+        img_aguarde.style.visibility = 'hidden';
+        if (resposta) {
+            div_erro.style.visibility = 'visible';
+            div_erro.innerHTML = resposta;
+        }
+    }
 
-    // verificar_autenticacao();
+    verificar_autenticacao();
 
 </script> -->
