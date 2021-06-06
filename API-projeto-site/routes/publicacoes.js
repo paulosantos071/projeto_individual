@@ -11,7 +11,7 @@ router.post('/publicar/:idUsuario', function(req, res, next) {
 
     Publicacao.create({
         titulo: req.body.titulo,
-        tipoReceita : req.body.tipo,
+        tipoReceita : req.body.tipoReceita,
         ingredientes : req.body.ingredientes,
         tituloReceita: req.body.tituloReceita,
         receita: req.body.receita,

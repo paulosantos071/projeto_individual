@@ -193,7 +193,7 @@ body{
     font-weight: bold;
     text-transform: uppercase;
     text-align: center;
-    padding-left: 40px;
+    padding-left: 20px;
     box-shadow: 0 1px 8px rgba(0,0,0,.5);
     outline: none;
     /* -webkit-appearance: none; */
@@ -479,12 +479,60 @@ body{
     width: auto;
     margin-left: 13%;
 }
+
+#div_topicos{
+    /* background-color: blue; */
+    width: 99.84%;
+    height: auto;
+    display: flex;
+}
+
+#div_titulo_pagina h1{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#div_doce{
+    background-color: yellow;
+    margin-left: 15px;
+    border-radius: 40px;
+    height: auto;
+    width: 32%;
+}
+
+#div_doce h3{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#div_salgado{
+    background-color: pink;
+    margin-left: 10px;
+    border-radius: 40px;
+    height: auto;
+    width: 32%;
+}
+
+#div_salgado h3{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#div_agridoce{
+    background-color: purple;
+    margin-left: 10px;
+    border-radius: 40px;
+    height: auto;
+    width: 32%;
+}
+
+#div_agridoce h3{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
  
 .feed{
     /* background-color: red; */
-    height: 400px;
-    margin-top: 200px;
-    margin-left: 200px;
-    margin-right: 100px;
+    height: auto;
+    width: 99.84%;
+    margin-top: 250px;
+    margin-left: 70px;
+    /* margin-right: 100px; */
     text-align: center;
 } 

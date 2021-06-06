@@ -60,25 +60,45 @@
                 </div>
                 <div id="div_button">
                     <button id="btn_publicar">PUBLICAR</button>
+
                 </div>
             </form>
-            
-        </div>
-        <div class="feed">
             <div class="extra">
                 <div id="div_erro" class="msg_erro">
                 </div>
-                <img src="aguarde-orange.gif" style="display: none;" id="img_aguarde"> 
+                <img src="aguarde-orange.gif" style="display: none;" id="img_aguarde">
             </div>
-            <h1>Publicações</h1>
+
+        </div>
+        <div class="feed">
+            <div id="div_titulo_pagina">
+                <h1>Publicações</h1>
+            </div>
+            <div id="div_topicos">
+               
+                <div id="div_doce">
+                    
+                    <h3>DOCE</h3>
+                </div>
+                <div id="div_salgado">
+                    <h3>SALGADO</h3>
+
+                </div>
+                <div id="div_agridoce">
+                    <h3>AGRIDOCE</h3>
+
+                </div>
+
+            </div>
+
             <div id="feed_container" class="container">
             </div>
         </div>
     </div>
-    
-     <!-- DIV DO MENU ESQUERDO DO PERFIL-->
-     <div id="left_1" style="display: none;">
-        <div id="painel_publicacao" >
+
+    <!-- DIV DO MENU ESQUERDO DO PERFIL-->
+    <div id="left_1" style="display: none;">
+        <div id="painel_publicacao">
             <img src="./imagens/usuario/painel-publicitario 1.svg" onclick="aparecer_feed()" alt="">
         </div>
         <div id="perfil_usuario">
@@ -126,8 +146,7 @@
 
 
 <script>
-
-verificar_autenticacao();
+    // verificar_autenticacao();
 
 
     function publicar() {
@@ -159,77 +178,138 @@ verificar_autenticacao();
     function atualizarFeed(publicacoes) {
         var feed = document.getElementById("feed_container");
         feed.innerHTML = "";
+        var doce = document.getElementById("div_doce");
+        doce.innerHTML = "";
+        var salgado = document.getElementById("div_salgado");
+        salgado.innerHTML = "";
+        var agridoce = document.getElementById("div_agridoce");
+        agridoce.innerHTML = "";
+
+        // div_qtdreceitas.innerHTML = `${}`
+
         for (let i = 0; i < publicacoes.length; i++) {
             var publicacao = publicacoes[i];
+
+
 
             var divPublicacao = document.createElement("div")
             var divTipo = document.createElement("div")
             var divNome = document.createElement("div")
-            var divTitulor = document.createElement("div") 
+            var divTitulor = document.createElement("div")
             var divIngredientes = document.createElement("div")
             var divDescricao = document.createElement("div")
 
-            divNome.innerHTML = `${publicacao.nome}:`;
-            divTipo.innerHTML = publicacao.tipoReceita;
-            divTitulor.innerHTML = publicacao.tituloReceita;
-            divIngredientes.innerHTML = publicacao.ingredientes
-            divDescricao.innerHTML = publicacao.receita;
+            if (publicacao.tipoReceita == "DOCE") {
+                divNome.innerHTML = `${publicacao.nome}:`;
+                divTitulor.innerHTML = publicacao.tituloReceita;
+                divIngredientes.innerHTML = publicacao.ingredientes
+                divDescricao.innerHTML = publicacao.receita;
 
-            divPublicacao.className = "publicacao"
-            divTipo.className = "tipoReceita"
-            divTitulor.className = "tituloReceita"
-            divIngredientes.className = "Ingredientes"
-            divNome.className = "nome";
-            divDescricao.className = "descricao";
+                divPublicacao.className = "publicacao"
+                divTitulor.className = "tituloReceita"
+                divIngredientes.className = "Ingredientes"
+                divNome.className = "nome";
+                divDescricao.className = "descricao";
 
-            divPublicacao.appendChild(divNome);
-            divPublicacao.appendChild(divTipo);
-            divPublicacao.appendChild(divTitulor);
-            divPublicacao.appendChild(divIngredientes);
-            divPublicacao.appendChild(divDescricao);
-            
+                divPublicacao.appendChild(divNome);
+                divPublicacao.appendChild(divTitulor);
+                divPublicacao.appendChild(divIngredientes);
+                divPublicacao.appendChild(divDescricao);
 
-            feed.appendChild(divPublicacao);
+
+                doce.appendChild(divPublicacao);
+                onload="obterPublicacoes()"
+                // break
+            }
+            if (publicacao.tipoReceita == "SALGADO") {
+                divNome.innerHTML = `${publicacao.nome}:`;
+                divTitulor.innerHTML = publicacao.tituloReceita;
+                divIngredientes.innerHTML = publicacao.ingredientes
+                divDescricao.innerHTML = publicacao.receita;
+
+                divPublicacao.className = "publicacao"
+                divTipo.className = "tipoReceita"
+                divTitulor.className = "tituloReceita"
+                divIngredientes.className = "Ingredientes"
+                divNome.className = "nome";
+                divDescricao.className = "descricao";
+
+                divPublicacao.appendChild(divNome);
+                divPublicacao.appendChild(divTipo);
+                divPublicacao.appendChild(divTitulor);
+                divPublicacao.appendChild(divIngredientes);
+                divPublicacao.appendChild(divDescricao);
+
+
+                salgado.appendChild(divPublicacao);
+                onload="obterPublicacoes()"
+                // break
+            }
+            if (publicacao.tipoReceita == "AGRIDOCE") {
+                divNome.innerHTML = `${publicacao.nome}:`;
+                divTitulor.innerHTML = publicacao.tituloReceita;
+                divIngredientes.innerHTML = publicacao.ingredientes
+                divDescricao.innerHTML = publicacao.receita;
+
+                divPublicacao.className = "publicacao"
+                divTitulor.className = "tituloReceita"
+                divIngredientes.className = "Ingredientes"
+                divNome.className = "nome";
+                divDescricao.className = "descricao";
+
+                divPublicacao.appendChild(divNome);
+                divPublicacao.appendChild(divTitulor);
+                divPublicacao.appendChild(divIngredientes);
+                divPublicacao.appendChild(divDescricao);
+
+
+                agridoce.appendChild(divPublicacao);
+                onload="obterPublicacoes()"
+                // break
+            }
+
+
+
         }
     }
 
     function obterPublicacoes() {
         aguardar();
         fetch("/publicacoes")
-        .then(resposta => {
-            if (resposta.ok) {
-                resposta.json().then(function (resposta) {
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                   
-                    atualizarFeed(resposta);
+            .then(resposta => {
+                if (resposta.ok) {
+                    resposta.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
 
-                    finalizarAguardar();
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-                finalizarAguardar("Nenhum resultado encontrado ou erro na API");
-            }
-        })
-        .catch(function (error) {
-            console.error(`Erro na obtenção das publicações: ${error.message}`);
-        });
+                        atualizarFeed(resposta);
+
+                        finalizarAguardar();
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                    finalizarAguardar("Nenhum resultado encontrado ou erro na API");
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção das publicações: ${error.message}`);
+            });
     }
 
     function obterPublicacoesPorUsuario(idUsuario) {
         fetch(`/publicacoes/${idUsuario}`)
-        .then(resposta => {
-            if (resposta.ok) {
-                resposta.json().then(function (resposta) {
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                    // alert(JSON.stringify(resposta))
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-            }
-        })
-        .catch(function (error) {
-            console.error(`Erro na obtenção das publicações do usuário: ${error.message}`);
-        });
+            .then(resposta => {
+                if (resposta.ok) {
+                    resposta.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        // alert(JSON.stringify(resposta))
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção das publicações do usuário: ${error.message}`);
+            });
     }
 
     function aguardar() {
@@ -246,8 +326,6 @@ verificar_autenticacao();
             div_erro.innerHTML = resposta;
         }
     }
-
-
 </script> -->
 
 <script>
@@ -257,8 +335,8 @@ verificar_autenticacao();
         left.style.display = 'none'
         left_1.style.display = 'block'
         if (document.title != 'Feed de Receitas') {
-    document.title = 'Perfil do Usuario';
-}
+            document.title = 'Perfil do Usuario';
+        }
     }
 
     function aparecer_feed() {
@@ -266,8 +344,7 @@ verificar_autenticacao();
         rigth_feed.style.display = 'block'
         left_1.style.display = 'none'
         left.style.display = 'block'
-        
+
 
     }
-
 </script>
