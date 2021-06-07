@@ -6,10 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./CSS/usuario.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.min.js" integrity="sha512-VCHVc5miKoln972iJPvkQrUYYq7XpxXzvqNfiul1H4aZDwGBGC0lq373KNleaB2LpnC2a/iNfE5zoRYmB4TRDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title id="titulo_pagina">USUARIO</title>
 </head>
 
-<body onload="obterPublicacoes()">
+<body onload="obterPublicacoes()" onload="grafico()">
     <!-- SCRIPT DAS FUNÇÕES JS -->
     <script type="text/javascript" src="./funcoes.js"></script>
     <!-- DIV DO MENU ESQUERDO DO FEED-->
@@ -26,7 +27,7 @@
         </div>
     </div>
     <!-- DIV DO CONTEUDO DIREITO DO FEED-->
-    <div id="rigth_feed" style="display: block;">
+    <div id="rigth_feed" style="display: block;" >
         <div id="div_topo">
             <div id="div_logo">
                 <img src="./imagens/usuario/image 2.svg" alt="">
@@ -75,7 +76,7 @@
                 <h1>Publicações</h1>
             </div>
             <div id="div_topicos">
-               
+                <div id="div_qtdreceitas"></div>
                 <div id="div_doce">
                     
                     <h3>DOCE</h3>
@@ -90,9 +91,10 @@
                 </div>
 
             </div>
-
-            <div id="feed_container" class="container">
-            </div>
+            
+                <div style="width: 450px; height: 450px;">
+                    <canvas id="myChart" width="400" height="400"></canvas>
+                </div>
         </div>
     </div>
 
@@ -146,7 +148,43 @@
 
 
 <script>
-    // verificar_autenticacao();
+    verificar_autenticacao();
+
+    
+
+    function grafico() {
+
+        var graf1 = Number((quantDoce / total) * 100);
+        var graf2 = Number((quantSalgado / total) * 100);
+        var graf3 = Number((quantAgridoce / total) * 100);
+
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: [
+                    'DOCE',
+                    'SALGADO',
+                    'AGRIDOCE'
+                ],
+                datasets: [{
+                    label: 'My First Dataset',
+                    data: [graf1, graf2, graf3 /*20,30,50*/ ],
+                    backgroundColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 205, 86)'
+                    ],
+                    hoverOffset: 4
+
+                }]
+            }
+        });
+
+       
+
+
+    }
 
 
     function publicar() {
@@ -175,9 +213,13 @@
         return false;
     }
 
+    var quantDoce = 0
+    var quantSalgado = 0
+    var quantAgridoce = 0
+    var total = 0
+
     function atualizarFeed(publicacoes) {
-        var feed = document.getElementById("feed_container");
-        feed.innerHTML = "";
+    
         var doce = document.getElementById("div_doce");
         doce.innerHTML = "";
         var salgado = document.getElementById("div_salgado");
@@ -185,12 +227,8 @@
         var agridoce = document.getElementById("div_agridoce");
         agridoce.innerHTML = "";
 
-        // div_qtdreceitas.innerHTML = `${}`
-
         for (let i = 0; i < publicacoes.length; i++) {
             var publicacao = publicacoes[i];
-
-
 
             var divPublicacao = document.createElement("div")
             var divTipo = document.createElement("div")
@@ -199,11 +237,12 @@
             var divIngredientes = document.createElement("div")
             var divDescricao = document.createElement("div")
 
-            if (publicacao.tipoReceita == "DOCE") {
                 divNome.innerHTML = `${publicacao.nome}:`;
                 divTitulor.innerHTML = publicacao.tituloReceita;
                 divIngredientes.innerHTML = publicacao.ingredientes
                 divDescricao.innerHTML = publicacao.receita;
+
+            if (publicacao.tipoReceita == "DOCE") {
 
                 divPublicacao.className = "publicacao"
                 divTitulor.className = "tituloReceita"
@@ -215,17 +254,15 @@
                 divPublicacao.appendChild(divTitulor);
                 divPublicacao.appendChild(divIngredientes);
                 divPublicacao.appendChild(divDescricao);
-
-
+                
+                total++
+                quantDoce++
                 doce.appendChild(divPublicacao);
                 onload="obterPublicacoes()"
                 // break
             }
-            if (publicacao.tipoReceita == "SALGADO") {
-                divNome.innerHTML = `${publicacao.nome}:`;
-                divTitulor.innerHTML = publicacao.tituloReceita;
-                divIngredientes.innerHTML = publicacao.ingredientes
-                divDescricao.innerHTML = publicacao.receita;
+            else if (publicacao.tipoReceita == "SALGADO") {
+                
 
                 divPublicacao.className = "publicacao"
                 divTipo.className = "tipoReceita"
@@ -239,17 +276,15 @@
                 divPublicacao.appendChild(divTitulor);
                 divPublicacao.appendChild(divIngredientes);
                 divPublicacao.appendChild(divDescricao);
-
-
+                
+                total++;
+                quantSalgado++
                 salgado.appendChild(divPublicacao);
                 onload="obterPublicacoes()"
                 // break
             }
-            if (publicacao.tipoReceita == "AGRIDOCE") {
-                divNome.innerHTML = `${publicacao.nome}:`;
-                divTitulor.innerHTML = publicacao.tituloReceita;
-                divIngredientes.innerHTML = publicacao.ingredientes
-                divDescricao.innerHTML = publicacao.receita;
+            else if (publicacao.tipoReceita == "AGRIDOCE") {
+            
 
                 divPublicacao.className = "publicacao"
                 divTitulor.className = "tituloReceita"
@@ -261,16 +296,16 @@
                 divPublicacao.appendChild(divTitulor);
                 divPublicacao.appendChild(divIngredientes);
                 divPublicacao.appendChild(divDescricao);
-
-
+                
+                total++
+                quantAgridoce++
                 agridoce.appendChild(divPublicacao);
                 onload="obterPublicacoes()"
                 // break
             }
-
-
-
+           
         }
+        
     }
 
     function obterPublicacoes() {
@@ -282,7 +317,8 @@
                         console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
 
                         atualizarFeed(resposta);
-
+                        
+                        grafico();
                         finalizarAguardar();
                     });
                 } else {
