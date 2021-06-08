@@ -43,6 +43,7 @@
                 <button onclick="ocultar()" id="btn_ocultar">OCULTAR FORMULARIO</button>
                 <button onclick="aparecer()" id="btn_aparecer" style="display: none;">VISUALIZAR FORMULARIO</button>
                 <button onclick="grafico()">VISUALIZAR GRAFICO</button>
+                <button onclick="receitas()">VISUALIZAR RECEITAS</button>
             </div>
 
             <form id="form_publicar" method="post" onsubmit="return publicar()">
@@ -150,8 +151,16 @@
                 <h4>Sexo</h4>
             </div>
             <div id="data_sexo_escrito">
-                <div id="dataNasc"></div>
-                <div id="sexo"></div>
+                <div id="dataNasc">
+                    <b id="b_dataNasc">
+
+                    </b>
+                </div>
+                <div id="sexo">
+                    <b id="b_sexo">
+
+                    </b>
+                </div>
             </div>
             <div id="div_logo_perfil">
                 <img src="./imagens/login/logo.png" alt="">
@@ -188,7 +197,9 @@ verificar_autenticacao();
         window.location.href = 'grafico.html';
     }
 
-
+    function receitas() {
+        window.location.href="#div_fedd_pagina"
+    }
 
 
 

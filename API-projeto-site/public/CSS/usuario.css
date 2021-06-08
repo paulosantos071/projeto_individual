@@ -340,6 +340,12 @@ body{
     margin-top: 10px;
 }
 
+#b_dataNasc{
+    margin-block-start: 10px;
+    margin-block-end: 0;
+
+}
+
 
 
 #div_email {
@@ -396,6 +402,8 @@ body{
 }
 
 #dataNasc{
+    text-align: center;
+    padding-top: 10px;
     border: none;
     width: 200px;
     height: 40px;
@@ -407,6 +415,8 @@ body{
 }
 
 #sexo{
+    text-align: center;
+    padding-top: 10px;
     border: none;
     width: 200px;
     height: 40px;
@@ -617,8 +627,8 @@ body{
   }
 
   #div_buttons {
-      display: block;
-      margin-left: 200px;
+      display: flex;
+      margin-left: 100px;
   }
 
   #div_buttons button{
