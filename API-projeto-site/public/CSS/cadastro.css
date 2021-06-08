@@ -13,7 +13,7 @@ body{
     background-color: #FFF6E0;
     border-radius :0px 0px 50px 50px ;
     display: flex;
-    margin-bottom: 50px;
+    /* margin-bottom: 50px; */
 }
 
 #div_logo img{
@@ -29,7 +29,7 @@ body{
 }
 
 #cabecalho ul li{
-    margin-left: 70px;
+    margin-left: 50px;
 }
 
 #cabecalho ul li a{
@@ -97,11 +97,15 @@ body{
     font-size: 15px;
 }
 
+#img_aguarde{
+    /* background-color: red; */
+    height: 120px;
+    margin-left: 130px;
+}
 
 
-
-/* ##form_login input:focus{
+#form_cadastro input:focus{
     box-shadow: 0 0 0 0;
     border: 0 none;
     outline: 0;
-} */
+} 

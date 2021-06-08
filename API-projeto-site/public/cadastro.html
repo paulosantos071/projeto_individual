@@ -19,6 +19,7 @@
         <ul>
             <li><a href="cadastro.html">Cadastro</a></li>
             <li><a href="login.html">Login</a></li>
+            <li><a href="https://receitacomamor.on.spiceworks.com/portal">Suporte</a></li>
         </ul>
 
     </div>
@@ -40,8 +41,19 @@
                     <h5>Nome completo</h5>  
                     <input type="text" name="nome" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome" required minlength="4">
                     
+                    <h5>Data de Nascimento</h5>  
+                    <input type="date" name="dataNasc" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome" required minlength="4">
+
+                    <h5>Sexo</h5>  
+                    <select class="input-padrao" name="sexo">
+                        <option value="">--SELECIONE UMA OPÇÃO--</option>
+                        <option value="MASCULINO">MASCULINO</option>
+                        <option value="FEMININO">FEMININO</option>
+                        <option value="OUTRO">OUTRO</option>
+                    </select>
+
                     <h5>E-mail</h5> 
-                    <input type="text" name="login" class="input-padrao" placeholder="seu nome de usuário" required minlength="4">
+                    <input type="email" name="login" class="input-padrao" placeholder="seu nome de usuário" required minlength="4">
                     
                     <h5>Senha</h5> 
                     <input type="password" name="senha" class="input-padrao" placeholder="***************" required minlength="4"> <br>
@@ -51,7 +63,7 @@
                 </form>
             </div>
 
-            <img src="aguarde-orange2.gif" id="img_aguarde" style="display: none; width:100px">
+            <img src="./carregar.gif" id="img_aguarde" style="display: none; width:100px">
 
             <div id="div_erro" style="background-color: sandybrown; color: maroon; display: none;">
                 Erro no cadastro

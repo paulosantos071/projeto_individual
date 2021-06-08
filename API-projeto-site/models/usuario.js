@@ -18,6 +18,16 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.STRING,
 			allowNull: false
 		},
+		dataNasc: {
+			field: 'dataNasc',
+			type: DataTypes.DATE,
+			allowNull: false
+		},
+		sexo: {
+			field: 'sexo',
+			type: DataTypes.STRING,
+			allowNull: false
+		},
 		login: {
 			field: 'login',
 			type: DataTypes.STRING,

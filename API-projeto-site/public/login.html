@@ -19,6 +19,7 @@
         <ul>
             <li><a href="cadastro.html">Cadastro</a></li>
             <li><a href="login.html">Login</a></li>
+            <li><a href="https://receitacomamor.on.spiceworks.com/portal">Suporte</a></li>
         </ul>
 
     </div>
@@ -51,7 +52,7 @@
                 <div id="div_erro" class="msg_erro">
                 </div>
 
-                <img src="aguarde-orange.gif" id="img_aguarde" style="display: none;">
+                <img src="./carregar.gif" id="img_aguarde" style="display: none; height: 130px; margin-left: 40px;">
                 
             </div>
         </div>
@@ -75,9 +76,10 @@
 
                 resposta.json().then(json => {
                     sessionStorage.login_usuario_meuapp = json.login;
-                    sessionStorage.nome_usuario_meuapp = json.dataNac;
+                    sessionStorage.nome_usuario_meuapp = json.nome;
                     sessionStorage.id_usuario_meuapp = json.ID; 
-                    sessionStorage.dataNasc_usuario_meuapp
+                    sessionStorage.dataNasc_usuario_meuapp = json.dataNasc;
+                    sessionStorage.sexo_usuario_meuapp = json.sexo;
 
                     window.location.href = 'usuario.html';
                 });

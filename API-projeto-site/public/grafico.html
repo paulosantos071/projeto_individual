@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.min.js"
+        integrity="sha512-VCHVc5miKoln972iJPvkQrUYYq7XpxXzvqNfiul1H4aZDwGBGC0lq373KNleaB2LpnC2a/iNfE5zoRYmB4TRDQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="./CSS/grafico.css">
+    <title>Document</title>
+</head>
+<body onload="gerarGrafico()">
+    <div id="botao">
+        <button onclick="voltar()">VOLTAR PARA O PERFIL</button>
+    </div>
+    <div id="div_titulo">
+        <h1>GRAFICO DE POSTEAGEM POR CATEGORIA</h1>
+    </div>
+    <div id="grafico" >
+        <canvas id="myChart" width="400" height="400"></canvas>
+        <div id="total">
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    function voltar() {
+        window.location.href = 'usuario.html';
+    }
+
+   function gerarGrafico() {
+        fetch("/leituras/dados", {
+            method: "GET"
+        }).then(resposta => {
+
+            if (resposta.ok) {
+                resposta.json().then(json => {
+                    const plugin = {
+                        id: 'custom_canvas_background_color',
+                        beforeDraw: (chart) => {
+                            const ctx = chart.canvas.getContext('2d');
+                            ctx.save();
+                            ctx.globalCompositeOperation = 'destination-over';
+                            ctx.fillStyle = 'white';
+                            ctx.fillRect(0, 0, chart.width, chart.height);
+                            ctx.restore();
+                        }
+                    };
+        
+                    var myChart = new Chart(document.getElementById('myChart'), {
+
+                        type: 'pie',
+                        data: {
+                            labels: [
+                                'DOCE',
+                                'SALGADO',
+                                'AGRIDOCE'
+                            ],
+                            datasets: [{
+                                label: 'My First Dataset',
+                                data: [json.tipoDOCE, json.tipoSALGADO, json.tipoAGRIDCOCE],
+                                backgroundColor: [
+                                    'rgb(255, 99, 132)',
+                                    'rgb(54, 162, 235)',
+                                    'rgb(255, 205, 86)'
+                                ],
+                                hoverOffset: 4
+
+                            }]
+                        }
+                    });
+                    var totals = json.tipoDOCE+json.tipoSALGADO+json.tipoAGRIDCOCE
+                    total.innerHTML = `<b>TOTAL DE PUBLICAÇÃO:</b> ${totals}<br>
+                                        <b>TOTAL DE USUARIOS:</b> ${json.quantUsuario}`
+                })      
+            } else {
+
+                console.log('Erro no gráfico');
+                response.text().then(function (resposta) {
+
+                });
+
+
+            }
+        });
+
+        return false;
+    }
+</script>
