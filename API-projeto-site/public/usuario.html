@@ -12,7 +12,7 @@
     <title id="titulo_pagina">USUARIO</title>
 </head>
 
-<body onload="obterPublicacoes()" >
+<body onload="obterPublicacoes()">
     <!-- SCRIPT DAS FUNÇÕES JS -->
     <script type="text/javascript" src="./funcoes.js"></script>
     <!-- DIV DO MENU ESQUERDO DO FEED-->
@@ -29,7 +29,7 @@
         </div>
     </div>
     <!-- DIV DO CONTEUDO DIREITO DO FEED-->
-    <div id="rigth_feed" style="display: block;" >
+    <div id="rigth_feed" style="display: block;">
         <div id="div_topo">
             <div id="div_logo">
                 <img src="./imagens/usuario/image 2.svg" alt="">
@@ -116,7 +116,7 @@
 
             </div>
 
-            
+
         </div>
     </div>
 
@@ -135,7 +135,10 @@
     <!-- DIV DO CONTEUDO DIREITO DO PERFIL -->
     <div id="rigth_perfil" style="display: none;">
         <div id="div_foto">
-            <img src="./imagens/usuario/usuario-masculino 1.svg" alt="">
+            <img id="perfil_outros" src="./imagens/usuario/perfil_outros.svg" alt="" style="display: none;">
+            <img id="perfil_masculino" src="./imagens/usuario/perfil_masculino.svg" alt="" style="display: none;">
+            <img id="perfil_feminino" src="./imagens/usuario/perfil_feminino.svg" alt="" style="display: none; ">
+
         </div>
         <div id="div_nome">
             <h4>Nome</h4>
@@ -174,8 +177,17 @@
 
 
 <script>
+    verificar_autenticacao();
 
-verificar_autenticacao();
+    var sexo_perfil = document.getElementById('b_sexo').innerHTML;
+
+    if (sexo_perfil == 'MASCULINO') {
+        perfil_masculino.style.display = 'block'
+    } else if (sexo_perfil == 'FEMININO') {
+        perfil_feminino.style.display = 'block'
+    } else if(sexo_perfil == 'OUTROS'){
+        perfil_outros.style.display = 'block'
+    }
 
     function ocultar() {
         form_publicar.style.display = 'none'
@@ -193,12 +205,12 @@ verificar_autenticacao();
         div_error.style.display = 'block'
     }
 
-    function grafico(){
+    function grafico() {
         window.location.href = 'grafico.html';
     }
 
     function receitas() {
-        window.location.href="#div_fedd_pagina"
+        window.location.href = "#div_fedd_pagina"
     }
 
 
@@ -313,7 +325,7 @@ verificar_autenticacao();
                 onload = "obterPublicacoes()"
                 // break
             }
-           
+
 
         }
 

@@ -8,19 +8,14 @@ var env = process.env.NODE_ENV || 'development';
 
 // estatísticas (max, min, média, mediana, quartis etc)
 router.get('/dados', function (req, res, next) {
-
-	verificar_autenticacao()
 	
-	var idUsuario = sessionStorage.id_usuario_meuapp;
-
 	console.log(`Recuperando as estatísticas atuais`);
 
 	const instrucaoSql = `SELECT
     (SELECT COUNT(*) FROM receita WHERE tipoReceita = "DOCE") as tipoDOCE,
     (SELECT COUNT(*) FROM receita WHERE tipoReceita = "SALGADO") as tipoSALGADO,
     (SELECT COUNT(*) FROM receita WHERE tipoReceita = "AGRIDOCE") as tipoAGRIDCOCE,
-	(SELECT COUNT(*) FROM usuario) as quantUsuario
-	(SELECT COUNT(*) FROM receita WHERE fkUsuario = ${idUsuario} as quantPublicacao`;
+	(SELECT COUNT(*) FROM usuario) as quantUsuario`;
 					
 
 	sequelize.query(instrucaoSql, { type: sequelize.QueryTypes.SELECT })
