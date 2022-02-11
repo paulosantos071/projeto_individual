@@ -1,9 +1,9 @@
-# ![Alt text](/projeto_individual/API-projeto-site/public/imagens/home/logo.png?raw=true "Receita")    ![Alt text](/API-projeto-site/public/assets/img/SafeSystem.png?raw=true "Logotipo SafeSystem")
+# ![Alt text](/projeto_individual/API-projeto-site/public/imagens/home/logo.png)    ![Alt text](/projeto_individual/API-projeto-site/public/imagens/home/logo.png)
 
 ## Olá a todos :wave:
 
-Repositório destinado ao grupo de Pesquisa & Inovação - 2ADSB <br>
-Grupo 06
+Repositório destinado ao projeto do 1ºSEMESTRE de ADS - BANDTEC <br>
+
 
 ## Linguagens e Frameworks :rocket:
 
