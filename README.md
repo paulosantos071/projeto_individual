@@ -1,4 +1,4 @@
-# ![Alt text](/projeto_individual/API-projeto-site/public/imagens/home/logo.png)    ![Alt text](/projeto_individual/API-projeto-site/public/imagens/home/logo.png)
+# ![Alt text](/projeto_individual/API-projeto-site/public/imagens/home/logo.png?raw=true "Logotipo SafeSystem")    ![Alt text](/projeto_individual/API-projeto-site/public/imagens/home/logo.png?raw=true "Logotipo SafeSystem")
 
 ## Olá a todos :wave:
 
